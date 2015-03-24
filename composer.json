@@ -1,0 +1,42 @@
+{
+    "name": "shapecode/imagine-thumbnail-gravity-filter",
+    "description": "",
+    "keywords": [
+        "shapecode",
+        "tenolo",
+        "imagine",
+        "filter",
+        "thumbnail",
+        "gravity"
+    ],
+    "type": "imagine-filter",
+    "license": "MIT",
+    "homepage": "http://shapecode.de",
+    "support": {
+        "email": "support@nikita-loges.de",
+        "issues": "https://bitbucket.org/shapecode/imagine-thumbnailgravity-filter/issues",
+        "source": "https://bitbucket.org/shapecode/imagine-thumbnailgravity-filter/downloads",
+        "wiki": "https://bitbucket.org/shapecode/imagine-thumbnailgravity-filter/wiki/Home"
+    },
+    "authors": [
+        {
+            "name": "tenolo GbR",
+            "homepage": "http://tenolo.de",
+            "email": "info@tenolo.de"
+        },
+        {
+            "name": "Nikita Loges",
+            "homepage": "http://nikita-loges.de",
+            "email": "develop@nikita-loges.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9",
+        "imagine/imagine": "~0.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shapecode\\Imagine\\ThumbnailGravity\\": ""
+        }
+    }
+}
