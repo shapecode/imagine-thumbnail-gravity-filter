@@ -1,6 +1,6 @@
 {
     "name": "shapecode/imagine-thumbnail-gravity-filter",
-    "description": "",
+    "description": "Simple extension for imagine to enable thumbnail gravity.",
     "keywords": [
         "shapecode",
         "tenolo",
@@ -9,14 +9,14 @@
         "thumbnail",
         "gravity"
     ],
-    "type": "imagine-filter",
+    "type": "library",
     "license": "MIT",
-    "homepage": "http://shapecode.de",
+    "homepage": "https://github.com/shapecode/imagine-thumbnail-gravity-filter",
     "support": {
         "email": "support@nikita-loges.de",
-        "issues": "https://bitbucket.org/shapecode/imagine-thumbnailgravity-filter/issues",
-        "source": "https://bitbucket.org/shapecode/imagine-thumbnailgravity-filter/downloads",
-        "wiki": "https://bitbucket.org/shapecode/imagine-thumbnailgravity-filter/wiki/Home"
+        "issues": "https://github.com/shapecode/imagine-thumbnail-gravity-filter/issues",
+        "source": "https://github.com/shapecode/imagine-thumbnail-gravity-filter/releases",
+        "wiki": "https://github.com/shapecode/imagine-thumbnail-gravity-filter/wiki"
     },
     "authors": [
         {
@@ -31,12 +31,29 @@
         }
     ],
     "require": {
-        "php": ">=5.3.9",
+        "php": "~5.3|~7.0",
+
         "imagine/imagine": "~0.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.0"
     },
     "autoload": {
         "psr-4": {
-            "Shapecode\\Imagine\\ThumbnailGravity\\": ""
+            "Shapecode\\Imagine\\ThumbnailGravity\\": "src/"
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shapecode\\Imagine\\ThumbnailGravity\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-release/1.0": "1.0-dev",
+            "dev-release/1.1": "1.1-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
