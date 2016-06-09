@@ -1,6 +1,6 @@
 {
     "name": "shapecode/imagine-thumbnail-gravity-filter",
-    "description": "",
+    "description": "Simple extension for imagine to enable thumbnail gravity.",
     "keywords": [
         "shapecode",
         "tenolo",
