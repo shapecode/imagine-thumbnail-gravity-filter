@@ -1,53 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shapecode\Imagine\ThumbnailGravity\Image\Gravity;
 
 use Imagine\Image\BoxInterface;
 use Imagine\Image\PointInterface;
 
-/**
- * Class GravityInterface
- * @package Shapecode\Imagine\ThumbnailGravity\Image\Gravity
- * @author Nikita Loges
- * @company tenolo GbR
- * @date 23.06.14
- */
-interface GravityInterface extends PointInterface
+interface GravityInterface
 {
+    public function getX() : int;
 
-    /**
-     * @param  BoxInterface $box
-     * @return PointInterface
-     */
-    public function getStartPoint(BoxInterface $box);
+    public function getY() : int;
 
-    /**
-     * @param  BoxInterface $box
-     * @return PointInterface
-     */
-    public function getEndPoint(BoxInterface $box);
+    public function getStartPoint(BoxInterface $box) : PointInterface;
 
-    /**
-     * Returns another point, moved by a given amount from current coordinates
-     *
-     * @param  integer $amount
-     * @return PointInterface
-     */
-    public function moveY($amount);
-
-    /**
-     * Returns another point, moved by a given amount from current coordinates
-     *
-     * @param  integer $amount
-     * @return PointInterface
-     */
-    public function moveX($amount);
-
-    /**
-     * Returns another point, moved by a given amount from current coordinates
-     *
-     * @param  BoxInterface $box
-     * @return PointInterface
-     */
-    public function moveBox(BoxInterface $box);
+    public function getEndPoint(BoxInterface $box) : PointInterface;
 }

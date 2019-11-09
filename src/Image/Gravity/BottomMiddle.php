@@ -1,62 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shapecode\Imagine\ThumbnailGravity\Image\Gravity;
 
 use Imagine\Image\BoxInterface;
 use Imagine\Image\Point;
+use Imagine\Image\PointInterface;
+use function ceil;
 
-/**
- * Class BottomMiddle
- * @package Shapecode\Imagine\ThumbnailGravity\Image\Gravity
- * @author Nikita Loges
- * @company tenolo GbR
- * @date 23.06.14
- */
 class BottomMiddle extends AbstractGravity
 {
-    /**
-     * @var BoxInterface
-     */
-    private $box;
-
-    /**
-     * Constructs coordinate with size instance, it needs to be relative to
-     *
-     * @param BoxInterface $box
-     */
-    public function __construct(BoxInterface $box)
+    public function getX() : int
     {
-        $this->box = $box;
+        return (int) ceil($this->box->getWidth() / 2);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getX()
-    {
-        return ceil($this->box->getWidth() / 2);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getY()
+    public function getY() : int
     {
         return $this->box->getHeight();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getStartPoint(BoxInterface $box)
+    public function getStartPoint(BoxInterface $box) : PointInterface
     {
-        return new Point($this->getX() - ($box->getWidth() / 2), $this->getY() - $box->getHeight());
+        $x = (int) ($this->getX() - ($box->getWidth() / 2));
+
+        return new Point($x, $this->getY() - $box->getHeight());
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getEndPoint(BoxInterface $box)
+    public function getEndPoint(BoxInterface $box) : PointInterface
     {
         return new Point($this->getX(), $this->getY());
     }

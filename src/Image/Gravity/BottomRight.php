@@ -1,63 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shapecode\Imagine\ThumbnailGravity\Image\Gravity;
 
 use Imagine\Image\BoxInterface;
 use Imagine\Image\Point;
+use Imagine\Image\PointInterface;
 
-/**
- * Class BottomRight
- * @package Shapecode\Imagine\ThumbnailGravity\Image\Gravity
- * @author Nikita Loges
- * @company tenolo GbR
- * @date 23.06.14
- */
 class BottomRight extends AbstractGravity
 {
-    /**
-     * @var BoxInterface
-     */
-    private $box;
-
-    /**
-     * Constructs coordinate with size instance, it needs to be relative to
-     *
-     * @param BoxInterface $box
-     */
-    public function __construct(BoxInterface $box)
-    {
-        $this->box = $box;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getX()
+    public function getX() : int
     {
         return $this->box->getWidth();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getY()
+    public function getY() : int
     {
         return $this->box->getHeight();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getStartPoint(BoxInterface $box)
+    public function getStartPoint(BoxInterface $box) : PointInterface
     {
         return new Point($this->getX() - $box->getWidth(), $this->getY() - $box->getHeight());
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getEndPoint(BoxInterface $box)
+    public function getEndPoint(BoxInterface $box) : PointInterface
     {
-        return $this;
+        return new Point($box->getWidth(), $box->getHeight());
     }
 }

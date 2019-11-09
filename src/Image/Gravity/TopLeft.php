@@ -1,32 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shapecode\Imagine\ThumbnailGravity\Image\Gravity;
 
+use Imagine\Image\BoxInterface;
 use Imagine\Image\Point;
+use Imagine\Image\PointInterface;
 
-/**
- * Class TopLeft
- * @package Shapecode\Imagine\ThumbnailGravity\Image\Gravity
- * @author Nikita Loges
- * @company tenolo GbR
- * @date 23.06.14
- */
 class TopLeft extends AbstractGravity
 {
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getX()
+    public function getStartPoint(BoxInterface $box) : PointInterface
     {
-        return 0;
+        return new Point($this->getX(), $this->getY());
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getY()
+    public function getEndPoint(BoxInterface $box) : PointInterface
     {
-        return 0;
+        return new Point($this->getX() + $box->getWidth(), $this->getY() + $box->getHeight());
     }
 }
