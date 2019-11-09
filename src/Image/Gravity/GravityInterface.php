@@ -19,6 +19,12 @@ interface GravityInterface
 
     public function getHeight() : int;
 
+    public function isWeightGreaterThanHeight() : bool;
+
+    public function getRatio() : float;
+
+    public function equalsRation(float $ratio) : bool;
+
     public function getStartPoint(BoxInterface $box) : PointInterface;
 
     public function getEndPoint(BoxInterface $box) : PointInterface;

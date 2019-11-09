@@ -25,14 +25,14 @@ class ThumbnailGravity implements FilterInterface
         $currentSize = $image->getSize();
 
         $ratioCurrent = $currentSize->getHeight() / $currentSize->getWidth();
-        $ratioNew     = $this->gravity->getHeight() / $this->gravity->getWidth();
+        $ratioNew     = $this->gravity->getRatio();
 
         // ratio inverse of original and thumb image
         $ratioInverseNew = 1 / $ratioNew;
 
         // image has to crop
-        if ($ratioCurrent !== $ratioNew) {
-            if ($this->gravity->getWidth() > $this->gravity->getHeight()) {
+        if ($this->gravity->equalsRation($ratioCurrent)) {
+            if ($this->gravity->isWeightGreaterThanHeight()) {
                 $cropHeight = $currentSize->getWidth() * $ratioNew;
                 $cropWidth  = $currentSize->getWidth();
 
