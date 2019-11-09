@@ -6,22 +6,17 @@ namespace Shapecode\Imagine\ThumbnailGravity\Filter\Advanced;
 
 use Imagine\Filter\FilterInterface;
 use Imagine\Image\Box;
-use Imagine\Image\BoxInterface;
 use Imagine\Image\ImageInterface;
 use Imagine\Image\ManipulatorInterface;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\GravityInterface;
 
 class ThumbnailGravity implements FilterInterface
 {
-    /** @var BoxInterface */
-    private $size;
-
     /** @var GravityInterface */
     private $gravity;
 
-    public function __construct(BoxInterface $size, GravityInterface $gravity)
+    public function __construct(GravityInterface $gravity)
     {
-        $this->size    = $size;
         $this->gravity = $gravity;
     }
 
@@ -30,14 +25,14 @@ class ThumbnailGravity implements FilterInterface
         $currentSize = $image->getSize();
 
         $ratioCurrent = $currentSize->getHeight() / $currentSize->getWidth();
-        $ratioNew     = $this->size->getHeight() / $this->size->getWidth();
+        $ratioNew     = $this->gravity->getHeight() / $this->gravity->getWidth();
 
         // ratio inverse of original and thumb image
         $ratioInverseNew = 1 / $ratioNew;
 
         // image has to crop
         if ($ratioCurrent !== $ratioNew) {
-            if ($this->size->getWidth() > $this->size->getHeight()) {
+            if ($this->gravity->getWidth() > $this->gravity->getHeight()) {
                 $cropHeight = $currentSize->getWidth() * $ratioNew;
                 $cropWidth  = $currentSize->getWidth();
 
@@ -66,6 +61,6 @@ class ThumbnailGravity implements FilterInterface
             $image = $image->crop($startPoint, $cropSize);
         }
 
-        return $image->resize($this->size);
+        return $image->resize($this->gravity->getSize());
     }
 }

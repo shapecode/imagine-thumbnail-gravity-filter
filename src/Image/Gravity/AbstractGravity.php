@@ -27,6 +27,21 @@ abstract class AbstractGravity implements GravityInterface
         return 0;
     }
 
+    public function getSize() : BoxInterface
+    {
+        return $this->box;
+    }
+
+    public function getWidth() : int
+    {
+        return $this->box->getWidth();
+    }
+
+    public function getHeight() : int
+    {
+        return $this->box->getHeight();
+    }
+
     public function __toString() : string
     {
         return sprintf('(%d, %d)', $this->getX(), $this->getY());

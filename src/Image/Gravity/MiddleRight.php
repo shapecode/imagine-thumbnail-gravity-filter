@@ -30,6 +30,8 @@ class MiddleRight extends AbstractGravity
 
     public function getEndPoint(BoxInterface $box) : PointInterface
     {
-        return new Point($this->getX(), $this->getY());
+        $y = (int) ($this->getY() + ($box->getHeight() / 2));
+
+        return new Point($this->getX(), $y);
     }
 }

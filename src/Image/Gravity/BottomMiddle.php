@@ -30,6 +30,8 @@ class BottomMiddle extends AbstractGravity
 
     public function getEndPoint(BoxInterface $box) : PointInterface
     {
-        return new Point($this->getX(), $this->getY());
+        $x = (int) ($this->getX() + ($box->getWidth() / 2));
+
+        return new Point($x, $this->getY());
     }
 }

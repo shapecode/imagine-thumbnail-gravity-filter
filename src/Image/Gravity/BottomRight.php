@@ -27,6 +27,6 @@ class BottomRight extends AbstractGravity
 
     public function getEndPoint(BoxInterface $box) : PointInterface
     {
-        return new Point($box->getWidth(), $box->getHeight());
+        return new Point($this->getX(), $this->getY());
     }
 }

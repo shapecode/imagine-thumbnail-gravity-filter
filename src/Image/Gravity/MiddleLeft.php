@@ -25,6 +25,8 @@ class MiddleLeft extends AbstractGravity
 
     public function getEndPoint(BoxInterface $box) : PointInterface
     {
-        return new Point($this->getX() + $box->getWidth(), $this->getY());
+        $y = (int) ($this->getY() + ($box->getHeight() / 2));
+
+        return new Point($this->getX() + $box->getWidth(), $y);
     }
 }

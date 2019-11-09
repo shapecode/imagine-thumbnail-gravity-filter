@@ -13,6 +13,12 @@ interface GravityInterface
 
     public function getY() : int;
 
+    public function getSize() : BoxInterface;
+
+    public function getWidth() : int;
+
+    public function getHeight() : int;
+
     public function getStartPoint(BoxInterface $box) : PointInterface;
 
     public function getEndPoint(BoxInterface $box) : PointInterface;
