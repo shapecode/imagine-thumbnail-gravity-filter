@@ -6,11 +6,11 @@ namespace Shapecode\Imagine\ThumbnailGravity\Tests\Filter\Advanced;
 
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
+use PHPStan\Testing\TestCase;
 use Shapecode\Imagine\ThumbnailGravity\Filter\Advanced\ThumbnailGravity;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\MiddleMiddle;
-use Shapecode\Imagine\ThumbnailGravity\Tests\FilterTestCase;
 
-class ThumbnailGravityTest extends FilterTestCase
+class ThumbnailGravityTest extends TestCase
 {
     public function testGravity() : void
     {
