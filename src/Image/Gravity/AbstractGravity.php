@@ -32,31 +32,6 @@ abstract class AbstractGravity implements GravityInterface
         return $this->box;
     }
 
-    public function getWidth() : int
-    {
-        return $this->box->getWidth();
-    }
-
-    public function getHeight() : int
-    {
-        return $this->box->getHeight();
-    }
-
-    public function isWeightGreaterThanHeight() : bool
-    {
-        return $this->getWidth() > $this->getHeight();
-    }
-
-    public function getRatio() : float
-    {
-        return $this->getHeight() / $this->getWidth();
-    }
-
-    public function equalsRation(float $ratio) : bool
-    {
-        return $this->getRatio() === $ratio;
-    }
-
     public function __toString() : string
     {
         return sprintf('(%d, %d)', $this->getX(), $this->getY());

@@ -9,6 +9,7 @@ use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
 use Imagine\Image\ManipulatorInterface;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\GravityInterface;
+use Shapecode\Imagine\ThumbnailGravity\Util\BoxUtil;
 
 class ThumbnailGravity implements FilterInterface
 {
@@ -23,16 +24,14 @@ class ThumbnailGravity implements FilterInterface
     public function apply(ImageInterface $image) : ManipulatorInterface
     {
         $currentSize = $image->getSize();
+        $util        = new BoxUtil($this->gravity->getSize());
 
-        $ratioCurrent = $currentSize->getHeight() / $currentSize->getWidth();
-        $ratioNew     = $this->gravity->getRatio();
-
-        // ratio inverse of original and thumb image
+        $ratioNew        = $util->getRatio();
         $ratioInverseNew = 1 / $ratioNew;
 
         // image has to crop
-        if ($this->gravity->equalsRation($ratioCurrent)) {
-            if ($this->gravity->isWeightGreaterThanHeight()) {
+        if ($util->equalsRation($currentSize)) {
+            if ($util->isWeightGreaterThanHeight()) {
                 $cropHeight = $currentSize->getWidth() * $ratioNew;
                 $cropWidth  = $currentSize->getWidth();
 
