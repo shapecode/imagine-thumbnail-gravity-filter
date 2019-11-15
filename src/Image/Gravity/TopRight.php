@@ -10,20 +10,11 @@ use Imagine\Image\PointInterface;
 
 class TopRight extends AbstractGravity
 {
-    public function getX() : int
+    public function getStartPoint(BoxInterface $currentSize, BoxInterface $cropSize) : PointInterface
     {
-        return $this->box->getWidth();
-    }
+        $x = $currentSize->getWidth() - $cropSize->getWidth();
+        $y = 0;
 
-    public function getStartPoint(BoxInterface $box) : PointInterface
-    {
-        $x = $this->getX() - $box->getWidth();
-
-        return new Point($x, $this->getY());
-    }
-
-    public function getEndPoint(BoxInterface $box) : PointInterface
-    {
-        return new Point($this->getX(), $this->getY() + $box->getHeight());
+        return new Point($x, $y);
     }
 }

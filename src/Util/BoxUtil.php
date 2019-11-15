@@ -28,7 +28,7 @@ class BoxUtil
 
     public function equalsRation(BoxInterface $box) : bool
     {
-        $ratio = $box->getHeight() / $box->getWidth();
+        $ratio = (float) ($box->getHeight() / $box->getWidth());
 
         return $this->getRatio() === $ratio;
     }

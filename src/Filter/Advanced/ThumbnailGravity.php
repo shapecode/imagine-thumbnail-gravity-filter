@@ -24,13 +24,14 @@ class ThumbnailGravity implements FilterInterface
     public function apply(ImageInterface $image) : ManipulatorInterface
     {
         $currentSize = $image->getSize();
-        $util        = new BoxUtil($this->gravity->getSize());
+        $gravitySize = $this->gravity->getSize();
+        $util        = new BoxUtil($gravitySize);
 
         $ratioNew        = $util->getRatio();
         $ratioInverseNew = 1 / $ratioNew;
 
         // image has to crop
-        if ($util->equalsRation($currentSize)) {
+        if (! $util->equalsRation($currentSize)) {
             if ($util->isWeightGreaterThanHeight()) {
                 $cropHeight = $currentSize->getWidth() * $ratioNew;
                 $cropWidth  = $currentSize->getWidth();
@@ -54,12 +55,13 @@ class ThumbnailGravity implements FilterInterface
             $cropWidth  = (int) $cropWidth;
             $cropHeight = (int) $cropHeight;
 
-            $cropSize   = new Box($cropWidth, $cropHeight);
-            $startPoint = $this->gravity->getStartPoint($cropSize);
+            $cropSize = new Box($cropWidth, $cropHeight);
+
+            $startPoint = $this->gravity->getStartPoint($currentSize, $cropSize);
 
             $image = $image->crop($startPoint, $cropSize);
         }
 
-        return $image->resize($this->gravity->getSize());
+        return $image->resize($gravitySize);
     }
 }

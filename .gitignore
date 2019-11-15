@@ -2,3 +2,5 @@
 /composer.lock
 /composer.phar
 .phpunit.result.cache
+/tests/_data/tmp
+!/tests/_data/tmp/.gitkeep

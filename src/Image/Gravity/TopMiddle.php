@@ -11,22 +11,11 @@ use function ceil;
 
 class TopMiddle extends AbstractGravity
 {
-    public function getX() : int
+    public function getStartPoint(BoxInterface $currentSize, BoxInterface $cropSize) : PointInterface
     {
-        return (int) ceil($this->box->getWidth() / 2);
-    }
+        $x = (int) ceil(($currentSize->getWidth() / 2) - ($cropSize->getWidth() / 2));
+        $y = 0;
 
-    public function getStartPoint(BoxInterface $box) : PointInterface
-    {
-        $x = (int) ($this->getX() - ($box->getWidth() / 2));
-
-        return new Point($x, $this->getY());
-    }
-
-    public function getEndPoint(BoxInterface $box) : PointInterface
-    {
-        $x = (int) ($this->getX() + ($box->getWidth() / 2));
-
-        return new Point($x, $this->getY() + $box->getHeight());
+        return new Point($x, $y);
     }
 }
