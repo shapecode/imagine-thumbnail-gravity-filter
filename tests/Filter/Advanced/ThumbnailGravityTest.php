@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Shapecode\Imagine\ThumbnailGravity\Tests\Filter\Advanced;
 
+use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
-use Imagine\Image\ImageInterface;
 use PHPStan\Testing\TestCase;
 use Shapecode\Imagine\ThumbnailGravity\Filter\Advanced\ThumbnailGravity;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\MiddleMiddle;
@@ -14,26 +14,17 @@ class ThumbnailGravityTest extends TestCase
 {
     public function testGravity() : void
     {
-        $width  = 100;
-        $height = 100;
+        $box = new Box(25, 25);
 
-        $dimension = new Box($width, $height);
-        $box       = new Box(25, 25);
-
-        $return = $this->createMock(ImageInterface::class);
-
-        $image = $this->createMock(ImageInterface::class);
-        $image->expects($this->once())
-            ->method('resize')
-            ->willReturn($return);
-
-        $image->expects($this->once())
-            ->method('getSize')
-            ->willReturn($dimension);
+        $imagine = new Imagine();
+        $image   = $imagine->open(__DIR__ . '/../../_data/test.jpg');
 
         $gravity = new MiddleMiddle($box);
 
         $filter = new ThumbnailGravity($gravity);
-        $this->assertSame($return, $filter->apply($image));
+        $middleMiddle = $filter->apply($image);
+
+        $middleMiddle->save(__DIR__ . '/../../_data/middle_middle.jpg');
+
     }
 }
