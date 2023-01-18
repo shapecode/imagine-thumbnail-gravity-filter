@@ -13,15 +13,11 @@ use Shapecode\Imagine\ThumbnailGravity\Util\BoxUtil;
 
 class ThumbnailGravity implements FilterInterface
 {
-    /** @var GravityInterface */
-    private $gravity;
-
-    public function __construct(GravityInterface $gravity)
+    public function __construct(private GravityInterface $gravity)
     {
-        $this->gravity = $gravity;
     }
 
-    public function apply(ImageInterface $image) : ManipulatorInterface
+    public function apply(ImageInterface $image): ManipulatorInterface
     {
         $currentSize = $image->getSize();
         $gravitySize = $this->gravity->getSize();

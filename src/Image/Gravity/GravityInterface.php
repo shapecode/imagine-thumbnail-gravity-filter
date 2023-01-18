@@ -9,7 +9,7 @@ use Imagine\Image\PointInterface;
 
 interface GravityInterface
 {
-    public function getSize() : BoxInterface;
+    public function getSize(): BoxInterface;
 
-    public function getStartPoint(BoxInterface $currentSize, BoxInterface $cropSize) : PointInterface;
+    public function getStartPoint(BoxInterface $currentSize, BoxInterface $cropSize): PointInterface;
 }
