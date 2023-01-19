@@ -6,7 +6,7 @@ namespace Shapecode\Imagine\ThumbnailGravity\Tests\Filter\Advanced;
 
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
-use PHPStan\Testing\TestCase;
+use PHPUnit\Framework\TestCase;
 use Shapecode\Imagine\ThumbnailGravity\Filter\Advanced\ThumbnailGravity;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\BottomLeft;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\BottomMiddle;
@@ -20,7 +20,7 @@ use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopRight;
 
 class ThumbnailGravityTest extends TestCase
 {
-    public function testGravity() : void
+    public function testGravity(): void
     {
         $box = new Box(25, 25);
 
@@ -50,7 +50,7 @@ class ThumbnailGravityTest extends TestCase
         $this->expectNotToPerformAssertions();
     }
 
-    public function testGravity2() : void
+    public function testGravity2(): void
     {
         $box = new Box(25, 30);
 

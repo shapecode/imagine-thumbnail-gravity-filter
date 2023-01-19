@@ -8,25 +8,21 @@ use Imagine\Image\BoxInterface;
 
 class BoxUtil
 {
-    /** @var BoxInterface */
-    protected $box;
-
-    public function __construct(BoxInterface $box)
+    public function __construct(protected BoxInterface $box)
     {
-        $this->box = $box;
     }
 
-    public function isWeightGreaterThanHeight() : bool
+    public function isWeightGreaterThanHeight(): bool
     {
         return $this->box->getWidth() > $this->box->getHeight();
     }
 
-    public function getRatio() : float
+    public function getRatio(): float
     {
         return $this->box->getHeight() / $this->box->getWidth();
     }
 
-    public function equalsRation(BoxInterface $box) : bool
+    public function equalsRation(BoxInterface $box): bool
     {
         $ratio = (float) ($box->getHeight() / $box->getWidth());
 
