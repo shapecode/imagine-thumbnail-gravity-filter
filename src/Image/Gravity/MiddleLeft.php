@@ -12,8 +12,10 @@ use function ceil;
 
 class MiddleLeft extends AbstractGravity
 {
-    public function getStartPoint(BoxInterface $currentSize, BoxInterface $cropSize): PointInterface
-    {
+    public function getStartPoint(
+        BoxInterface $currentSize,
+        BoxInterface $cropSize,
+    ): PointInterface {
         $x = 0;
         $y = (int) ceil(($currentSize->getHeight() / 2) - ($cropSize->getHeight() / 2));
 

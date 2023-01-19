@@ -12,8 +12,10 @@ use function ceil;
 
 class BottomMiddle extends AbstractGravity
 {
-    public function getStartPoint(BoxInterface $currentSize, BoxInterface $cropSize): PointInterface
-    {
+    public function getStartPoint(
+        BoxInterface $currentSize,
+        BoxInterface $cropSize,
+    ): PointInterface {
         $x = (int) ceil(($currentSize->getWidth() / 2) - ($cropSize->getWidth() / 2));
         $y = $currentSize->getHeight() - $cropSize->getHeight();
 

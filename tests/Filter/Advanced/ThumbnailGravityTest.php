@@ -18,6 +18,10 @@ use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopLeft;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopMiddle;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopRight;
 
+use function sys_get_temp_dir;
+use function tempnam;
+
+/** @covers \Shapecode\Imagine\ThumbnailGravity\Filter\Advanced\ThumbnailGravity */
 class ThumbnailGravityTest extends TestCase
 {
     public function testGravity(): void
@@ -38,13 +42,15 @@ class ThumbnailGravityTest extends TestCase
 
         $imagine = new Imagine();
 
-        foreach ($gravities as $name => $gravity) {
+        foreach ($gravities as $gravity) {
             $image = $imagine->open(__DIR__ . '/../../_data/a_test.jpg');
 
             $filter = new ThumbnailGravity($gravity);
             $thumb  = $filter->apply($image);
 
-            $thumb->save(__DIR__ . '/../../_data/tmp/' . $name . '.jpg');
+            $tmpName = tempnam(sys_get_temp_dir(), 'thumb');
+
+            $thumb->save($tmpName);
         }
 
         $this->expectNotToPerformAssertions();
@@ -68,13 +74,15 @@ class ThumbnailGravityTest extends TestCase
 
         $imagine = new Imagine();
 
-        foreach ($gravities as $name => $gravity) {
+        foreach ($gravities as $gravity) {
             $image = $imagine->open(__DIR__ . '/../../_data/a_test.jpg');
 
             $filter = new ThumbnailGravity($gravity);
             $thumb  = $filter->apply($image);
 
-            $thumb->save(__DIR__ . '/../../_data/tmp/2_' . $name . '.jpg');
+            $tmpName = tempnam(sys_get_temp_dir(), 'thumb');
+
+            $thumb->save($tmpName);
         }
 
         $this->expectNotToPerformAssertions();

@@ -16,6 +16,17 @@ use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopLeft;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopMiddle;
 use Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopRight;
 
+/**
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\BottomLeft
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\BottomMiddle
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\BottomRight
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\MiddleLeft
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\MiddleMiddle
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\MiddleRight
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopLeft
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopMiddle
+ * @covers \Shapecode\Imagine\ThumbnailGravity\Image\Gravity\TopRight
+ */
 class GravityTest extends TestCase
 {
     public function testBottomLeft(): void

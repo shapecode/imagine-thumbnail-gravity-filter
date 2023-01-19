@@ -8,11 +8,12 @@ use Imagine\Image\BoxInterface;
 
 abstract class AbstractGravity implements GravityInterface
 {
-    public function __construct(protected BoxInterface $box)
-    {
+    public function __construct(
+        private readonly BoxInterface $box,
+    ) {
     }
 
-    public function getSize(): BoxInterface
+    public function getBox(): BoxInterface
     {
         return $this->box;
     }

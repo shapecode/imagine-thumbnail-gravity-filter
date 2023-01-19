@@ -8,8 +8,9 @@ use Imagine\Image\BoxInterface;
 
 class BoxUtil
 {
-    public function __construct(protected BoxInterface $box)
-    {
+    public function __construct(
+        private readonly BoxInterface $box,
+    ) {
     }
 
     public function isWeightGreaterThanHeight(): bool

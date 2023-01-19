@@ -13,15 +13,16 @@ use Shapecode\Imagine\ThumbnailGravity\Util\BoxUtil;
 
 class ThumbnailGravity implements FilterInterface
 {
-    public function __construct(private GravityInterface $gravity)
-    {
+    public function __construct(
+        private readonly GravityInterface $gravity,
+    ) {
     }
 
     public function apply(ImageInterface $image): ManipulatorInterface
     {
         $currentSize = $image->getSize();
-        $gravitySize = $this->gravity->getSize();
-        $util        = new BoxUtil($gravitySize);
+        $box         = $this->gravity->getBox();
+        $util        = new BoxUtil($box);
 
         $ratioNew        = $util->getRatio();
         $ratioInverseNew = 1 / $ratioNew;
@@ -58,6 +59,6 @@ class ThumbnailGravity implements FilterInterface
             $image = $image->crop($startPoint, $cropSize);
         }
 
-        return $image->resize($gravitySize);
+        return $image->resize($box);
     }
 }
